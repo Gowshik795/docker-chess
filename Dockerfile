@@ -5,6 +5,7 @@ ENV ServerName 127.0.0.1
 
 COPY 000-default.conf /etc/apache2/sites-available/000-default.conf
 COPY start-apache /usr/local/bin
+RUN chmod +x /usr/local/bin/start-apache
 RUN a2enmod rewrite
 
 # Copy application source
