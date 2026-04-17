@@ -1,0 +1,21 @@
+name: Docker Image chess
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+
+  publish_images:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: checkcout
+      uses: actions/checkout@v3
+    - name: Build the Docker image
+      run: docker build . -t gowshik79/my_app:latest
+    - name: push images
+      run: 
+        docker login -u gowshik79 -p ${{secrets.chess}}
+        docker push  gowshik79/my_app:latest
